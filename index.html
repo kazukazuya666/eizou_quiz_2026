@@ -39,11 +39,12 @@
       <div id="judge-result" class="judge"></div>
       <div id="explanation-text" class="exp-text"></div>
       
-      <!-- 💡 ここを追加：嘆きのコメント表示枠 -->
+      <!-- 💡 嘆きのコメント表示枠 -->
       <div id="lament-text" class="lament-box hidden"></div>
 
       <button class="btn" style="margin-top: 15px; width: 100%;" onclick="nextQuestion()">次の問題へ</button>
     </div>
+  </div><!-- 👈 ここで quiz-screen を閉じるのがポイントです！ -->
 
   <!-- 結果表示画面 -->
   <div id="result-screen" class="hidden">
@@ -52,7 +53,8 @@
     <div id="review-list"></div>
     <button class="btn" style="width: 100%; margin-top: 25px;" onclick="restartQuiz()">もう1回</button>
   </div>
-</div>
+
+</div><!-- container の閉じタグ -->
 
 <script src="script.js"></script>
 </body>

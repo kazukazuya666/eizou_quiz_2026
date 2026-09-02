@@ -361,6 +361,7 @@ function nextQuestion() {
   }
 }
 
+// 結果画面を表示する処理
 function showResults() {
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("result-screen").classList.remove("hidden");
@@ -375,19 +376,31 @@ function showResults() {
     totalScore += ans.score;
     maxPossibleScore += ans.maxScore;
 
+    // 嘆きコメントがある場合のみ生成
+    const lamentHtml = ans.lament 
+      ? `<div style="color: #d93838; font-size: 0.85rem; margin-top: 5px; font-weight: bold;">一言: ${ans.lament}</div>` 
+      : "";
+
     const item = document.createElement("div");
     item.className = "review-item";
     item.innerHTML = `
       <div style="font-weight:bold; margin-bottom:5px;">問${idx + 1}: ${ans.question}</div>
-      <div>あなたの回答: <strong>${ans.userAnsText}</strong> (${ans.isCorrect ? "正解" : "不正解"})</div>
+      <div>あなたの回答: <strong>${ans.userAnsText}</strong> (${ans.isCorrect ? "正解 ⭕" : "不正解 ❌"})</div>
       ${!ans.isCorrect ? `<div style="color: #ff6b6b; font-size: 0.9rem;">正解: ${ans.correctAnsText}</div>` : ''}
       <div style="color: #666; font-size: 0.9rem; margin-top: 3px;">💡 解説: ${ans.explanation}</div>
+      ${lamentHtml}
     `;
     reviewList.appendChild(item);
   });
 
-  const percentage = Math.round((totalScore / maxPossibleScore) * 100);
-  document.getElementById("score-text").innerText = `${totalScore} / ${maxPossibleScore} 点 (${percentage}%)`;
+  // 正答率の計算（0除算防止）
+  const percentage = maxPossibleScore > 0 ? Math.round((totalScore / maxPossibleScore) * 100) : 0;
+  
+  // HTMLの id="score-text" の要素に結果を代入
+  const scoreEl = document.getElementById("score-text");
+  if (scoreEl) {
+    scoreEl.innerText = `スコア: ${totalScore} / ${maxPossibleScore} 点 (${percentage}%)`;
+  }
 }
 
 function restartQuiz() {
