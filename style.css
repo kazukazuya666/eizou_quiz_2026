@@ -84,7 +84,7 @@ h1 {
 }
 
 .btn-o { color: #ff6b6b; }
-.btn-x { color: #4ecdc4; }
+.btn-x { color: #0008ff; }
 .btn-ox:active { transform: scale(0.95); }
 
 /* 4択ボタン */
@@ -198,3 +198,23 @@ h1 {
 
 .hidden { display: none !important; }
 
+/* 嘆きのコメント用スタイル */
+.lament-box {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background-color: #fff4f4;
+  border-left: 4px solid #ff6b6b;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 嘆きメッセージの前に絵文字をつける */
+.lament-box::before {
+  content: "一言：";
+  display: block;
+  font-size: 0.7rem;
+  color: #000000;
+  margin-bottom: 3px;
+}

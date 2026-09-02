@@ -1,130 +1,144 @@
 // =========================================================
-// 📝 問題データ（○×・4択・並べ替え の3種類対応）
+// 📝 映像問題データ（○×・4択・並べ替え 各種）
 // =========================================================
 const allQuizData = [
-  // -------------------------------------------------------
-  // 1. ○×問題 (type: "ox")
-  // correct は true（○） または false（×）
-  // -------------------------------------------------------
+  // --- 1. ○×問題 ---
   {
     type: "ox",
-    question: "太陽は東から昇って西に沈む。",
-    correct: true,
-    explanation: "地球が西から東へ自転しているため、太陽は東から昇って見えます。"
-  },
-  {
-    type: "ox",
-    question: "ペンギンは空を飛ぶことができる鳥類である。",
+    question: "スチールを映像卓に入れるとき名前に『サマラ2026_スチール』とした。",
     correct: false,
-    explanation: "ペンギンは鳥類ですが、空を飛ぶことはできません。海を泳ぐことに特化しています。"
+    explanation: "スチールのファイル名は「数字」「アルファベット」「記号（半角）」しか使うことができない。",
+    lament: "これ結構重要だから覚えてね！"
   },
   {
     type: "ox",
-    question: "富士山は日本で一番高い山である。",
+    question: "電源を入れる順番は入力機器、中継機器、出力機器の順である",
     correct: true,
-    explanation: "富士山は標高3,776mで日本一高い山です。"
+    explanation: "映像が流れる順番で電源を入れる。カメラが最初でモニターが最後。",
+    lament: "最初と最後がわかればあとは勘でも何とかなるかも"
   },
   {
     type: "ox",
-    question: "1年は常に365日である。",
+    question: "SDカードのデータは毎回必ず消去（初期化・フォーマット）する",
+    correct: true,
+    explanation: "カメラでフォーマットを変えるので、毎回初期化設定を行なってください。データの破損や録画されないなどの可能性がある。",
+    lament:"カメラやる人は覚えといてね!"
+  },
+  {
+    type: "ox",
+    question: "HDMIケーブルはどれだけ長くてもノイズは入らない。",
     correct: false,
-    explanation: "4年に一度（一部例外あり）うるう年があり、その年は366日になります。"
+    explanation: "長ければ長いほどノイズが入りやすく信号が届かなくなる。SDIは100mのものも存在する。",
+    lament:"全部SDIでいいと思うのに何でだろうね"
   },
   {
     type: "ox",
-    question: "コアラは水をほとんど飲まなくても生きていける。",
-    correct: true,
-    explanation: "主食であるユーカリの葉から水分を摂取するため、直接水を飲むことはめったにありません。"
+    question: "スチールを分かりやすいように「サマラ2026」というファイルに保存し、映像卓に入れた。",
+    correct: false,
+    explanation: "スチールはファイルに入れてしまうと認識されないので、ファイル外に出して保存する。",
+    lament:"1年に2回くらいしか使わんからわすれても仕方がない"
   },
 
-  // -------------------------------------------------------
-  // 2. 4択問題 (type: "choice")
-  // choices に4つの選択肢配列、correctIndex に正解の番頭（0, 1, 2, 3）
-  // -------------------------------------------------------
+  // --- 2. 4択問題 ---
   {
     type: "choice",
-    question: "世界で一番広い面積を持つ国はどこでしょう？",
-    choices: ["アメリカ", "中国", "ロシア", "カナダ"],
-    correctIndex: 2, // 0:アメリカ, 1:中国, 2:ロシア, 3:カナダ
-    explanation: "ロシアは世界最大の面積（約1,710万平方km）を持っています。"
+    question: "映像卓の設定にある『AUX』とは何か",
+    correctChoice: "特定の映像を出力できる",
+    incorrectChoices: [ "出力映像にエフェクトがつけられる", "音がない映像が送れる", "すべての映像を録画できる", "入力された映像をクリアにする", "映像卓にデータが保存できる"],
+    explanation: "通常、出力されるのはマルチビュー（PVW）と選択した映像（PGM）のどちらかが出力されるが、AUXを使うことによって指定した特定の映像だけを固定で出力できる機能。",
+    lament:"次のゼミコンでは使うけどやったことないからできるかはわからん!"
   },
   {
     type: "choice",
-    question: "信号機の「進んでもよい」の色は一般的に何色と呼ばれている？",
-    choices: ["青", "緑", "水色", "エメラルド"],
-    correctIndex: 0,
-    explanation: "実際の色は緑に近いですが、日本では昔から「青信号」と呼ばれます。"
+    question: "QLabを使う時必ずやることはどれか",
+    correctChoice: "一番上に黒背景を入れる",
+    incorrectChoices: ["映像と音は分けて入れる", "映像の拡張子は.movにする", "映像を500MBまで圧縮する", "フレームレートを統一する", "日本語設定にする"],
+    explanation: "黒背景を入れないとPC画面がそのまま出力される可能性がある。拡張子の指定はなく、どんな映像でも扱うことができる。日本語にする設定はないので注意。",
+    lament:"何となくわかるけどやっぱ日本語対応してほしい..."
   },
   {
     type: "choice",
-    question: "元素記号「O」が表す元素は何でしょう？",
-    choices: ["金", "水素", "酸素", "炭素"],
-    correctIndex: 2,
-    explanation: "「O」は酸素（Oxygen）の元素記号です。ちなみに水素は「H」、炭素は「C」です。"
+    question: "暗い場所や照明がある場所だと、光の色が変わって見えるので、光の色味（色温度）を補正して、白いものを正しく白く見せるための設定はどれか",
+    correctChoice: "ホワイトバランス",
+    incorrectChoices: ["カラーグレーディング", "ISO感度", "F値", "ゼブラパターン", "フォーカスアシスト"],
+    explanation: "照明がついている状態で白い部分(ホワイトボードや白い紙)を映しホワイトバランス（WB）を設定すること。周りが明るくなると黄色っぽく見えるようになる。",
+    lament:"これやんないと全然見えんくなるからやってね"
   },
   {
     type: "choice",
-    question: "次のうち、実在する都道府県はどれでしょう？",
-    choices: ["西京府", "北海県", "香川県", "大坂県"],
-    correctIndex: 2,
-    explanation: "香川県が実在します。なお「京都府」「北海道」「大阪府」が正しい表記です。"
+    question: "HDMIケーブルのHDCPという機能で映像出力に制限がかかった場合に映像卓の機能としてHDCPのON / OFFを切り替えることで治ることがあるがデメリットがあるそれは何か？",
+    correctChoice: "SDIでは出力できなくなる",
+    incorrectChoices: ["映像がフルHDしか対応できなくなる", "音声が出力できなくなる", "クロマキー（DSK）ができなくなる", "映像にノイズが入るようになる", "AUXで固定映像が出力できなくなる"],
+    explanation: "SDIでの出力が止まってしまうので、サマラでは大丈夫だがゼミコンで客席卓を使う場合は使えない。",
+    lament:"そんなん言われても一生使うことないかもだからわんなくてもOK"
   },
   {
     type: "choice",
-    question: "人間の体の中で一番大きい臓器は何でしょう？",
-    choices: ["心臓", "胃", "肺", "肝臓"],
-    correctIndex: 3,
-    explanation: "肝臓は成人で約1.0〜1.5kgあり、人体で最も重く大きい臓器です。"
+    question: "OBSの注意点はどれか？",
+    correctChoice: "フルスクリーンにしない",
+    incorrectChoices: ["映像と音声の保存先を分ける", "録画する保存先はデスクトップにする", "映像が入力される前に録画を開始する", "キャンバス解像度は必ずフルHD（1920×1080）にする"],
+    explanation: "特にATEM変換で使う場合フルスクリーンにするとタブが変わるため出力する画面が変わってしまいうまく映像が送れなくなる。また、カメラや卓などからの入力映像が来てからOBSを起動しないとソースとして認識されないこともある。",
+    lament:"OBS画面が出力されなかったらこれ原因かも多分"
+  },
+  {
+    type: "choice",
+    question: "映像班では使用しないケーブルは？",
+    correctChoice: "XLRコネクター（キャノン）",
+    incorrectChoices: ["HDMIケーブル", "SDIケーブル", "USB C to C", "mini HDMI"],
+    explanation: "XLRコネクター、通称キャノンはマイクやスピーカーなど音響機器に使う。",
+    lament:"これはさすがに間違えてないよね？わかんなくても、多分消去法で多分できるはず。"
+  },
+  {
+    type: "choice",
+    question: "HDMIケーブルにはHDCPという著作権保護のための機能があるがそれはどんなものか？一番合うもの選んで",
+    correctChoice: "著作権保護のため映像と音が出力されなくなる",
+    incorrectChoices: ["著作権保護のため映像のみ出力されなくなる", "著作権保護のため音のみ出力されなくなる", "著作権保護のため映像にノイズが入る"],
+    explanation: "HDCPは映像や音声のデータがコピーされるのを防ぐための機能。映像と音声が出力されず画面が真っ黒になる。映像も音声も出力されなければHDCPが非対応または映像卓の設定でOFFになっている可能性がある。",
+    lament:"こんなん覚えてなくたって何とかなる!はず..."
   },
 
-  // -------------------------------------------------------
-  // 3. 並べ替え問題 (type: "sort")
-  // correctOrder に「正しい順番通り」の文字列配列を入れる
-  // （画面表示時に自動でシャッフルされます）
-  // -------------------------------------------------------
+  // --- 3. 並べ替え問題 ---
   {
     type: "sort",
-    question: "次の言葉を「五十音順（あいうえお順）」に並べ替えてください。",
-    correctOrder: ["いぬ", "きじ", "さる", "ねこ"],
-    explanation: "「いぬ → きじ → さる → ねこ」の順番が正解です。"
+    question: "動画の画素数（解像度）を「低い順（粗い順）」に並べ替えてください。",
+    correctOrder: ["SD", "HD", "フルHD", "4K"],
+    explanation: "SD → HD → フルHD → 4K の順で画素数が多くなり、解像度が高くなります。",
+    lament:"これは覚えといて損はない！"
   },
   {
     type: "sort",
-    question: "日本の時代を「古い順」に並べ替えてください。",
-    correctOrder: ["縄文時代", "平安時代", "江戸時代", "令和"],
-    explanation: "縄文時代 → 平安時代 → 江戸時代 → 令和 の順番が正解です。"
+    question: "電源を入れる順番に並べ替えてください。",
+    correctOrder: ["カメラ、QLabで使うPC", "コンバーター、TPminiなどの中継機器", "VR-120HDなどの映像卓（必要に応じて変換PC）", "モニター、録画PC、プロジェクター"],
+    explanation: "イメージとして川のように上から下に映像が流れていく感じ。最初のカメラと最後のプロジェクターがわかればイメージだけでわかるようになる。",
+    lament:"全員覚えてね！やればいつかできるようになる！"
   },
   {
     type: "sort",
-    question: "太陽系の惑星を「太陽に近い順」に並べ替えてください。",
-    correctOrder: ["水星", "金星", "地球", "火星"],
-    explanation: "太陽に近い順から「水星 → 金星 → 地球 → 火星」となります。"
+    question: "パワポで緑を抜く（クロマキー）をするときにDSKというものを使うが、DSKの設定順に並び替えてください。",
+    correctPatterns: [
+      ["DSKのsetupを押す", "DSK TypeをChroma Keyにする", "DSK Sourceを変更", "DSKのPGMを押す"],
+      ["DSKのsetupを押す", "DSK Sourceを変更", "DSK TypeをChroma Keyにする", "DSKのPGMを押す"]
+    ],
+    explanation: "２と３は順番はどちらが先でも大丈夫です！",
+    lament:"最初は分かりにくいけど、何回かやればすぐ覚えれる！きっと！"
   },
-  {
-    type: "sort",
-    question: "単位を「小さい順」に並べ替えてください。",
-    correctOrder: ["ミリメートル(mm)", "センチメートル(cm)", "メートル(m)", "キロメートル(km)"],
-    explanation: "mm → cm → m → km の順で大きくなります。"
-  },
-  {
-    type: "sort",
-    question: "1年の季節を「春から始まる順」に並べ替えてください。",
-    correctOrder: ["春", "夏", "秋", "冬"],
-    explanation: "春 → 夏 → 秋 → 冬 の順です。"
-  }
 ];
 
 // =========================================================
 // ⚙️ プログラム本体
 // =========================================================
 
-const QUESTION_LIMIT = 10; // ランダムで出題する問題数
+const QUESTION_LIMIT = 10;
 const SCORE_PER_QUESTION = 10;
 
 let currentQuizList = [];
 let currentIndex = 0;
 let userAnswers = [];
 
+// タッチ操作用グローバル変数
+let touchItem = null;
+
+// 配列をシャッフル（新しい配列を返す）
 function shuffleArray(array) {
   const clone = [...array];
   for (let i = clone.length - 1; i > 0; i--) {
@@ -135,9 +149,11 @@ function shuffleArray(array) {
 }
 
 function startQuiz() {
-  const shuffled = shuffleArray(allQuizData);
-  // 全問題の中から QUESTION_LIMIT 個をランダムで抽出
-  currentQuizList = shuffled.slice(0, Math.min(QUESTION_LIMIT, shuffled.length));
+  const shuffledAll = shuffleArray(allQuizData);
+  const selected = shuffledAll.slice(0, Math.min(QUESTION_LIMIT, shuffledAll.length));
+  
+  currentQuizList = JSON.parse(JSON.stringify(selected));
+  
   currentIndex = 0;
   userAnswers = [];
   
@@ -173,34 +189,53 @@ function loadQuestion() {
   }
 }
 
+// 4択問題の選択肢生成
 function renderChoices(q) {
   const listEl = document.getElementById("choice-list");
   listEl.innerHTML = "";
 
-  q.choices.forEach((choiceText, idx) => {
+  const shuffledIncorrect = shuffleArray(q.incorrectChoices).slice(0, 3);
+  const finalChoices = shuffleArray([q.correctChoice, ...shuffledIncorrect]);
+
+  q.currentChoices = finalChoices;
+
+  finalChoices.forEach((choiceText, idx) => {
     const btn = document.createElement("button");
     btn.className = "btn-choice";
     btn.innerText = `${idx + 1}. ${choiceText}`;
-    btn.onclick = () => answerChoice(idx);
+    btn.onclick = () => answerChoice(choiceText);
     listEl.appendChild(btn);
   });
 }
 
+// 並べ替え問題の選択肢生成
 function renderSortList(q) {
   const listEl = document.getElementById("sort-list");
   listEl.innerHTML = "";
 
-  const items = shuffleArray(q.correctOrder);
-  
+  const baseOrder = q.correctPatterns ? q.correctPatterns[0] : q.correctOrder;
+  let items = shuffleArray(baseOrder);
+
+  // 初期配置が偶然正解と同じになった場合は再シャッフル
+  if (items.length > 1) {
+    let loopCount = 0;
+    while (isCorrectOrder(q, items) && loopCount < 10) {
+      items = shuffleArray(baseOrder);
+      loopCount++;
+    }
+  }
+
   items.forEach((text) => {
     const item = document.createElement("div");
     item.className = "sort-item";
     item.innerText = text;
     item.draggable = true;
 
+    // マウスドラッグ用イベント
     item.addEventListener("dragstart", () => item.classList.add("dragging"));
     item.addEventListener("dragend", () => item.classList.remove("dragging"));
 
+    // タッチ操作用イベント
     item.addEventListener("touchstart", handleTouchStart, { passive: false });
     item.addEventListener("touchmove", handleTouchMove, { passive: false });
     item.addEventListener("touchend", handleTouchEnd);
@@ -208,6 +243,7 @@ function renderSortList(q) {
     listEl.appendChild(item);
   });
 
+  // マウスドラッグオーバー処理
   listEl.addEventListener("dragover", (e) => {
     e.preventDefault();
     const draggingItem = document.querySelector(".dragging");
@@ -218,23 +254,24 @@ function renderSortList(q) {
   });
 }
 
-let touchItem = null;
-
+// スマホタッチ操作イベント処理関数群
 function handleTouchStart(e) {
-  touchItem = e.target.closest(".sort-item");
-  if (touchItem) touchItem.classList.add("dragging");
+  touchItem = e.currentTarget;
+  touchItem.classList.add("dragging");
 }
 
 function handleTouchMove(e) {
   if (!touchItem) return;
-  e.preventDefault();
+  e.preventDefault(); // 画面スクロールを防止
   const touch = e.touches[0];
   const listEl = document.getElementById("sort-list");
   const siblings = [...listEl.querySelectorAll(".sort-item:not(.dragging)")];
+  
   const nextSibling = siblings.find(sibling => {
     const box = sibling.getBoundingClientRect();
     return touch.clientY <= box.top + box.height / 2;
   });
+  
   listEl.insertBefore(touchItem, nextSibling);
 }
 
@@ -245,34 +282,40 @@ function handleTouchEnd() {
   }
 }
 
+// 正解チェック補助関数
+function isCorrectOrder(q, items) {
+  if (q.correctPatterns && Array.isArray(q.correctPatterns)) {
+    return q.correctPatterns.some(pattern =>
+      pattern.every((val, idx) => val === items[idx])
+    );
+  } else if (q.correctOrder) {
+    return q.correctOrder.every((val, idx) => val === items[idx]);
+  }
+  return false;
+}
+
+// --- 回答処理 ---
+
 function answerOX(userChoice) {
   const q = currentQuizList[currentIndex];
   const isCorrect = (userChoice === q.correct);
   saveResult(q, isCorrect, userChoice ? "○" : "×", q.correct ? "○" : "×");
 }
 
-function answerChoice(selectedIndex) {
+function answerChoice(selectedText) {
   const q = currentQuizList[currentIndex];
-  const isCorrect = (selectedIndex === q.correctIndex);
-  saveResult(
-    q,
-    isCorrect,
-    q.choices[selectedIndex],
-    q.choices[q.correctIndex]
-  );
+  const isCorrect = (selectedText === q.correctChoice);
+  saveResult(q, isCorrect, selectedText, q.correctChoice);
 }
 
 function answerSort() {
   const q = currentQuizList[currentIndex];
   const currentItems = [...document.querySelectorAll("#sort-list .sort-item")].map(el => el.innerText);
-  const isCorrect = q.correctOrder.every((val, idx) => val === currentItems[idx]);
 
-  saveResult(
-    q,
-    isCorrect,
-    currentItems.join(" → "),
-    q.correctOrder.join(" → ")
-  );
+  const isCorrect = isCorrectOrder(q, currentItems);
+  const displayCorrectAns = q.correctPatterns ? q.correctPatterns[0].join(" → ") : q.correctOrder.join(" → ");
+
+  saveResult(q, isCorrect, currentItems.join(" → "), displayCorrectAns);
 }
 
 function saveResult(q, isCorrect, userAnsText, correctAnsText) {
@@ -283,7 +326,8 @@ function saveResult(q, isCorrect, userAnsText, correctAnsText) {
     isCorrect: isCorrect,
     score: isCorrect ? SCORE_PER_QUESTION : 0,
     maxScore: SCORE_PER_QUESTION,
-    explanation: q.explanation
+    explanation: q.explanation,
+    lament: q.lament // 嘆き文言も記録
   });
 
   document.getElementById("ox-container").classList.add("hidden");
@@ -295,6 +339,16 @@ function saveResult(q, isCorrect, userAnsText, correctAnsText) {
   judgeEl.style.color = isCorrect ? "#ff6b6b" : "#4a90e2";
 
   document.getElementById("explanation-text").innerText = q.explanation;
+
+  // --- 💡 嘆きの表示処理を追加 ---
+  const lamentEl = document.getElementById("lament-text");
+  if (q.lament) {
+    lamentEl.innerText = q.lament;
+    lamentEl.classList.remove("hidden");
+  } else {
+    lamentEl.classList.add("hidden");
+  }
+
   document.getElementById("feedback").classList.remove("hidden");
 }
 
@@ -340,4 +394,7 @@ function restartQuiz() {
   startQuiz();
 }
 
-startQuiz();
+// ページ読み込み時にクイズスタート
+window.onload = () => {
+  startQuiz();
+};
