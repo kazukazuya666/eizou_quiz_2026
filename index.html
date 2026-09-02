@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>クイズ＆パズル</title>
+  <title>映像班問題</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
-  <h1>✨ クイズ＆パズル ✨</h1>
+  <h1>映像問題</h1>
 
   <!-- 解答画面 -->
   <div id="quiz-screen">
@@ -29,9 +29,9 @@
 
     <!-- 並べ替え問題用（ドラッグ＆スライド対応） -->
     <div id="sort-container" class="sort-container hidden">
-      <p class="sort-hint">👆 上下にスライド・ドラッグして並べ替えてね</p>
+      <p class="sort-hint">スライドで並べ替え</p>
       <div id="sort-list" class="sort-list"></div>
-      <button class="btn" style="margin-top: 20px; width: 100%;" onclick="answerSort()">この順番で決定！</button>
+      <button class="btn" style="margin-top: 20px; width: 100%;" onclick="answerSort()">決定</button>
     </div>
 
     <!-- 解説エリア -->
@@ -45,9 +45,9 @@
   <!-- 結果表示画面 -->
   <div id="result-screen" class="hidden">
     <div class="result-score" id="score-text"></div>
-    <h3 class="review-title">全体の解説・振り返り</h3>
+    <h3 class="review-title">解説</h3>
     <div id="review-list"></div>
-    <button class="btn" style="width: 100%; margin-top: 25px;" onclick="restartQuiz()">もう一度挑戦する</button>
+    <button class="btn" style="width: 100%; margin-top: 25px;" onclick="restartQuiz()">もう1回</button>
   </div>
 </div>
 
