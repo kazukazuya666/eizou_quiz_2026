@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クイズ＆パズル</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>✨ クイズ＆パズル ✨</h1>
+
+  <!-- 解答画面 -->
+  <div id="quiz-screen">
+    <div id="question-number" class="q-number"></div>
+    <h2 id="question-text" class="q-text"></h2>
+    
+    <!-- ○×問題用 -->
+    <div id="ox-container" class="ox-container hidden">
+      <button class="btn-ox btn-o" onclick="answerOX(true)">○</button>
+      <button class="btn-ox btn-x" onclick="answerOX(false)">×</button>
+    </div>
+
+    <!-- 4択問題用 -->
+    <div id="choice-container" class="choice-container hidden">
+      <div id="choice-list" class="choice-list"></div>
+    </div>
+
+    <!-- 並べ替え問題用（ドラッグ＆スライド対応） -->
+    <div id="sort-container" class="sort-container hidden">
+      <p class="sort-hint">👆 上下にスライド・ドラッグして並べ替えてね</p>
+      <div id="sort-list" class="sort-list"></div>
+      <button class="btn" style="margin-top: 20px; width: 100%;" onclick="answerSort()">この順番で決定！</button>
+    </div>
+
+    <!-- 解説エリア -->
+    <div id="feedback" class="explanation-box hidden">
+      <div id="judge-result" class="judge"></div>
+      <div id="explanation-text" class="exp-text"></div>
+      <button class="btn" style="margin-top: 15px; width: 100%;" onclick="nextQuestion()">次の問題へ</button>
+    </div>
+  </div>
+
+  <!-- 結果表示画面 -->
+  <div id="result-screen" class="hidden">
+    <div class="result-score" id="score-text"></div>
+    <h3 class="review-title">全体の解説・振り返り</h3>
+    <div id="review-list"></div>
+    <button class="btn" style="width: 100%; margin-top: 25px;" onclick="restartQuiz()">もう一度挑戦する</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

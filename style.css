@@ -1,0 +1,199 @@
+/* 白ベースでポップ＆シンプルなデザイン */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f4f7f9;
+  color: #333;
+  margin: 0;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  touch-action: manipulation; /* スマホでの操作感を向上 */
+}
+
+.container {
+  background: #ffffff;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: 2px solid #eef2f5;
+}
+
+h1 {
+  text-align: center;
+  color: #4a90e2;
+  font-size: 1.6rem;
+  margin: 10px 0 20px;
+}
+
+.q-number {
+  color: #888;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.q-text {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+/* ボタン共通 */
+.btn {
+  background-color: #ffbd59;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 14px 20px;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #e0a030;
+  transition: transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+/* ○×選択ボタン */
+.ox-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 25px 0;
+}
+
+.btn-ox {
+  width: 100px;
+  height: 100px;
+  font-size: 3rem;
+  border-radius: 50%;
+  border: 3px solid #f0f0f0;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #eee;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-o { color: #ff6b6b; }
+.btn-x { color: #4ecdc4; }
+.btn-ox:active { transform: scale(0.95); }
+
+/* 4択ボタン */
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.btn-choice {
+  background: #ffffff;
+  border: 2px solid #e0e6ed;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #444;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-choice:active {
+  background: #eef5ff;
+  border-color: #4a90e2;
+}
+
+/* 並べ替え問題 */
+.sort-hint {
+  font-size: 0.85rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sort-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sort-item {
+  background: #f7f9fc;
+  border: 2px solid #e0e6ed;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #444;
+  cursor: grab;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  touch-action: none; /* スマホのドラッグ中のスクロール防止 */
+}
+
+.sort-item::after {
+  content: "☰";
+  color: #aaa;
+  font-size: 1.2rem;
+}
+
+.sort-item.dragging {
+  opacity: 0.5;
+  background: #e0f0ff;
+  border-color: #4a90e2;
+}
+
+/* 解説領域 */
+.explanation-box {
+  background: #f0f7ff;
+  border-left: 5px solid #4a90e2;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.judge {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.exp-text {
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* リザルト画面 */
+.result-score {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff6b6b;
+  margin: 20px 0;
+}
+
+.review-title {
+  border-bottom: 2px solid #4a90e2;
+  padding-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.review-item {
+  border-bottom: 2px dashed #eee;
+  padding: 12px 0;
+  font-size: 0.95rem;
+}
+
+.hidden { display: none !important; }
